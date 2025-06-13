@@ -15,4 +15,15 @@ class UsuariosController extends Controller
        return view('usuarios',compact('total','tecnicos','admins','usuarios'));
    }
 
+   public function changeAdmin(User $user){
+     $user->admin = !$user->admin;
+     $user->save();
+     return redirect()->route('usuarios')->with('success',"$user->name Atualizado!");
+   }
+   public function changeTecnico(User $user){
+     $user->tecnico = !$user->tecnico;
+     $user->save();
+     return redirect()->route('usuarios')->with('success',"$user->name Atualizado!");
+   }
+
 }
